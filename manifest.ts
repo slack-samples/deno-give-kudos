@@ -1,24 +1,13 @@
 import { Manifest } from "deno-slack-sdk/mod.ts";
-import SampleWorkflow from "./workflows/sample_workflow.ts";
-import SampleObjectDatastore from "./datastores/sample_datastore.ts";
+import FindGIF from "./functions/find_gif/definition.ts";
+import { ShareKudos } from "./workflows/share_kudos.ts";
 
-/**
- * The app manifest contains the app's configuration. This
- * file defines attributes like app name and description.
- * https://api.slack.com/future/manifest
- */
 export default Manifest({
-  name: "deno-starter-template",
-  description: "A template for building Slack apps with Deno",
+  name: "Kudo",
+  description: "Brighten someone's day with a heartfelt thank you",
   icon: "assets/icon.png",
-  workflows: [SampleWorkflow],
+  functions: [FindGIF],
+  workflows: [ShareKudos],
   outgoingDomains: [],
-  datastores: [SampleObjectDatastore],
-  botScopes: [
-    "commands",
-    "chat:write",
-    "chat:write.public",
-    "datastore:read",
-    "datastore:write",
-  ],
+  botScopes: ["commands", "chat:write", "chat:write.public"],
 });
