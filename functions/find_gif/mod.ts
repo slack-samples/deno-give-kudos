@@ -1,6 +1,6 @@
 import { SlackFunction } from "deno-slack-sdk/mod.ts";
 import FindGIF from "./definition.ts";
-import gifs from "./gifs.json" assert { type: "json" };
+import gifs from "../../assets/gifs.json" assert { type: "json" };
 
 interface GIF {
   URL: string;
