@@ -1,4 +1,4 @@
-# Kudo Sample App
+# Give Kudos Sample App
 
 Share warm kudos and kind words with anyone in your workspace using functions
 and a workflow!
@@ -42,10 +42,10 @@ Start by cloning this repository:
 
 ```zsh
 # Clone this project onto your machine
-$ slack create my-kudos-app -t slack-samples/deno-give-kudos
+$ slack create give-kudos-app -t slack-samples/deno-give-kudos
 
 # Change into this project directory
-$ cd my-kudos-app
+$ cd give-kudos-app
 ```
 
 ## Create a Link Trigger
@@ -97,7 +97,7 @@ Connected, awaiting events
 Once running, click the
 [previously created Shortcut URL](#create-a-link-trigger) associated with the
 `(dev)` version of your app. This should start open a form used to input the
-information needed for a kudo!
+information needed for kudos!
 
 To stop running locally, press `<CTRL> + C` to end the process.
 
