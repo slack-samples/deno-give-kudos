@@ -1,5 +1,5 @@
 import { DefineWorkflow, Schema } from "deno-slack-sdk/mod.ts";
-import FindGIF from "../functions/find_gif/definition.ts";
+import { FindGIFFunction } from "../functions/find_gif.ts";
 
 const ShareKudos = DefineWorkflow({
   callback_id: "share_kudos_workflow",
@@ -56,7 +56,7 @@ const kudo = ShareKudos.addStep(
   },
 );
 
-const gif = ShareKudos.addStep(FindGIF, {
+const gif = ShareKudos.addStep(FindGIFFunction, {
   vibe: kudo.outputs.fields.kudo_vibe,
 });
 

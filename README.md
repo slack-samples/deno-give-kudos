@@ -140,8 +140,8 @@ run with `deno test`:
 ```zsh
 $ deno test
 
-Check file:///Users/slackbot/deno-give-kudos/functions/find_gif/mod_test.ts
-running 2 tests from ./functions/find_gif/mod_test.ts
+Check file:///Users/slackbot/deno-give-kudos/functions/find_gif_test.ts
+running 2 tests from ./functions/find_gif_test.ts
 Find a GIF with the appreciation tag ... ok (15ms)
 Ensure otter gifs are returned if no vibe is selected ... ok (9ms)
 
