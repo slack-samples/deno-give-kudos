@@ -66,11 +66,11 @@ that Shortcut URLs will be different across each workspace, as well as between
 the Workspace that you'd like to create the Trigger in. Each Workspace has a
 development version (denoted by `(dev)`), as well as a deployed version.
 
-To create a Link Trigger for the "Share Kudos" Workflow, run the following
+To create a Link Trigger for the "Give Kudos" Workflow, run the following
 command:
 
 ```zsh
-$ slack trigger create --trigger-def triggers/share_kudos.ts
+$ slack trigger create --trigger-def triggers/give_kudos.ts
 ```
 
 After selecting a Workspace, the output provided will include the Link Trigger

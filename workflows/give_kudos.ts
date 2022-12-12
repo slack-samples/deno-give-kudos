@@ -1,9 +1,9 @@
 import { DefineWorkflow, Schema } from "deno-slack-sdk/mod.ts";
 import { FindGIFFunction } from "../functions/find_gif.ts";
 
-const ShareKudos = DefineWorkflow({
-  callback_id: "share_kudos_workflow",
-  title: "Share kudos",
+const GiveKudosWorkflow = DefineWorkflow({
+  callback_id: "give_kudos_workflow",
+  title: "Give kudos",
   description: "Acknowledge the impact someone had on you",
   input_parameters: {
     properties: {
@@ -15,11 +15,11 @@ const ShareKudos = DefineWorkflow({
   },
 });
 
-const kudo = ShareKudos.addStep(
+const kudo = GiveKudosWorkflow.addStep(
   Schema.slack.functions.OpenForm,
   {
-    title: "Write someone kudos",
-    interactivity: ShareKudos.inputs.interactivity,
+    title: "Give someone kudos",
+    interactivity: GiveKudosWorkflow.inputs.interactivity,
     submit_label: "Share",
     description: "Continue the positive energy through your written word",
     fields: {
@@ -56,11 +56,11 @@ const kudo = ShareKudos.addStep(
   },
 );
 
-const gif = ShareKudos.addStep(FindGIFFunction, {
+const gif = GiveKudosWorkflow.addStep(FindGIFFunction, {
   vibe: kudo.outputs.fields.kudo_vibe,
 });
 
-ShareKudos.addStep(Schema.slack.functions.SendMessage, {
+GiveKudosWorkflow.addStep(Schema.slack.functions.SendMessage, {
   channel_id: kudo.outputs.fields.kudo_channel,
   message:
     `*Hey <@${kudo.outputs.fields.doer_of_good_deeds}>!* Someone wanted to share some kind words with you :otter:\n` +
@@ -68,4 +68,4 @@ ShareKudos.addStep(Schema.slack.functions.SendMessage, {
     `${gif.outputs.URL}`,
 });
 
-export { ShareKudos };
+export { GiveKudosWorkflow };
