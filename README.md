@@ -17,10 +17,6 @@ and a workflow!
 - [Project Structure](#project-structure)
 - [Resources](#resources)
 
-**Demo**:
-
-![kudo](https://user-images.githubusercontent.com/18134219/190218519-a6b65b41-469b-44c7-8940-1677a780f9e2.gif)
-
 ---
 
 ## Setup
