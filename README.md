@@ -1,16 +1,16 @@
-# Deno Starter Template
+# Give Kudos Sample App
 
-This is a scaffolded Deno template used to build out Slack apps using the Slack
-CLI.
+Share warm kudos and kind words with anyone in your workspace using functions
+and a workflow!
 
 **Guide Outline**:
 
 - [Setup](#setup)
   - [Install the Slack CLI](#install-the-slack-cli)
-  - [Clone the Template](#clone-the-template)
+  - [Clone the Sample App](#clone-the-sample-app)
 - [Create a Link Trigger](#create-a-link-trigger)
 - [Running Your Project Locally](#running-your-project-locally)
-- [Datastores](#datastores)
+  - [Updating the GIF Catalog](#updating-the-gif-catalog)
 - [Testing](#testing)
 - [Deploying Your App](#deploying-your-app)
   - [Viewing Activity Logs](#viewing-activity-logs)
@@ -28,20 +28,20 @@ requires any of [the Slack paid plans](https://slack.com/pricing).
 
 ### Install the Slack CLI
 
-To use this template, you first need to install and configure the Slack CLI.
+To use this sample, you first need to install and configure the Slack CLI.
 Step-by-step instructions can be found in our
 [Quickstart Guide](https://api.slack.com/future/quickstart).
 
-### Clone the Template
+### Clone the Sample App
 
 Start by cloning this repository:
 
 ```zsh
 # Clone this project onto your machine
-$ slack create my-app -t slack-samples/deno-starter-template
+$ slack create give-kudos-app -t slack-samples/deno-give-kudos
 
 # Change into this project directory
-$ cd my-app
+$ cd give-kudos-app
 ```
 
 ## Create a Link Trigger
@@ -62,11 +62,11 @@ that Shortcut URLs will be different across each workspace, as well as between
 the Workspace that you'd like to create the Trigger in. Each Workspace has a
 development version (denoted by `(dev)`), as well as a deployed version.
 
-To create a Link Trigger for the Workflow in this template, run the following
+To create a Link Trigger for the "Give Kudos" Workflow, run the following
 command:
 
 ```zsh
-$ slack trigger create --trigger-def triggers/sample_trigger.ts
+$ slack trigger create --trigger-def triggers/give_kudos.ts
 ```
 
 After selecting a Workspace, the output provided will include the Link Trigger
@@ -92,24 +92,46 @@ Connected, awaiting events
 
 Once running, click the
 [previously created Shortcut URL](#create-a-link-trigger) associated with the
-`(dev)` version of your app. This should start the included sample Workflow.
+`(dev)` version of your app. This should start open a form used to input the
+information needed for kudos!
 
 To stop running locally, press `<CTRL> + C` to end the process.
 
-## Datastores
+### Updating the GIF Catalog
 
-If your app needs to store any data, a datastore would be the right place for
-that. For an example of a datastore, see `datastores/sample_datastore.ts`. Using
-a datastore also requires the `datastore:write`/`datastore:read` scopes to be
-present in your manifest.
+The GIFs that accompony a kudo are selected randomly after filtering against the
+user-input `kudo_vibe` from the `OpenForm` step of the workflow.
+
+This GIF catalog can be found in the `./assets/gifs.json` file and fixed to your
+fancies!
+
+```javascript
+// ./assets/gifs.json
+
+[{
+  "URL": "https://media1.giphy.com/media/ZfK4cXKJTTay1Ava29/giphy.gif",
+  "alt_text": "A person wearing a banana hat says thanks a bunch",
+  "tags": ["thankful"]
+}, {
+  "URL": "https://media2.giphy.com/media/ZfK4cXKJTTay1Ava29/giphy.gif",
+  "alt_text": "Dwight from The Office says thank you",
+  "tags": ["thankful", "appreciation"]
+}, {
+  ...
+}]
+```
+
+Each possible GIF is represented by an object with a `URL` of the GIF,
+`alt_text` that describes the GIF, and a `tags` array.
+
+Strings in the `tags` array are checked against the `kudo_vibe`, and GIFs that
+pass the vibe check are added to the pool of possibily chosen animations.
 
 ## Testing
 
-For an example of how to test a function, see
-`functions/sample_function_test.ts`. Test filenames should be suffixed with
-`_test`.
-
-Run all tests with `deno test`:
+The functionality of a custom function can be tested to ensure the
+implementation is correct. Test filenames are suffixed with `_test` and can be
+run with `deno test`:
 
 ```zsh
 $ deno test
@@ -169,12 +191,6 @@ to the next step.
 [Triggers](https://api.slack.com/future/triggers) determine when Workflows are
 executed. A trigger file describes a scenario in which a workflow should be run,
 such as a user pressing a button or when a specific event occurs.
-
-### `/datastores`
-
-[Datastores](https://api.slack.com/future/datastores) can securely store and
-retrieve data for your application. Required scopes to use datastores include
-`datastore:write` and `datastore:read`.
 
 ## Resources
 
