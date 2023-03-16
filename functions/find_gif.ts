@@ -15,7 +15,7 @@ export const FindGIFFunction = DefineFunction({
         description: "The energy for the GIF to match",
       },
     },
-    required: ["vibe"],
+    required: [],
   },
   output_parameters: {
     properties: {
@@ -57,6 +57,6 @@ const matchVibe = (vibe: string): GIF => {
 
 export default SlackFunction(FindGIFFunction, ({ inputs }) => {
   const { vibe } = inputs;
-  const gif = matchVibe(vibe);
+  const gif = matchVibe(vibe ?? "");
   return { outputs: gif };
 });
