@@ -2,6 +2,10 @@ import { SlackFunctionTester } from "deno-slack-sdk/mod.ts";
 import { assertArrayIncludes } from "https://deno.land/std@0.153.0/testing/asserts.ts";
 import FindGIF from "./find_gif.ts";
 
+/**
+ * The actual outputs of a function can be compared to expected outputs for a
+ * collection of given inputs.
+ */
 const { createContext } = SlackFunctionTester("find_gif");
 
 Deno.test("Find a GIF with the appreciation tag", async () => {

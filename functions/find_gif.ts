@@ -1,13 +1,17 @@
-import { SlackFunction } from "deno-slack-sdk/mod.ts";
+import { DefineFunction, Schema, SlackFunction } from "deno-slack-sdk/mod.ts";
 import gifs from "../assets/gifs.json" assert { type: "json" };
 
-import { DefineFunction, Schema } from "deno-slack-sdk/mod.ts";
-
+/**
+ * Functions are reusable building blocks of automation that accept inputs,
+ * perform calculations, and provide outputs. Functions can be used as steps in
+ * a workflow or independently.
+ * Learn more: https://api.slack.com/automation/functions/custom
+ */
 export const FindGIFFunction = DefineFunction({
   callback_id: "find_gif",
   title: "Find a GIF",
   description: "Search for a GIF that matches the vibe",
-  source_file: "functions/find_gif.ts",
+  source_file: "functions/find_gif.ts", // The file with the exported function handler
   input_parameters: {
     properties: {
       vibe: {
@@ -25,7 +29,7 @@ export const FindGIFFunction = DefineFunction({
       },
       alt_text: {
         type: Schema.types.string,
-        description: "description of the GIF",
+        description: "Description of the GIF",
       },
     },
     required: ["URL"],
@@ -55,6 +59,10 @@ const matchVibe = (vibe: string): GIF => {
   return matches[randomGIF];
 };
 
+/**
+ * The default export for a custom function accepts a function definition
+ * and a function handler that contains the custom logic for the function.
+ */
 export default SlackFunction(FindGIFFunction, ({ inputs }) => {
   const { vibe } = inputs;
   const gif = matchVibe(vibe ?? "");
