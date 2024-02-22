@@ -1,5 +1,5 @@
 import { DefineFunction, Schema, SlackFunction } from "deno-slack-sdk/mod.ts";
-import gifs from "../assets/gifs.json" assert { type: "json" };
+import gifs from "../assets/gifs.json" with { type: "json" };
 
 /**
  * Functions are reusable building blocks of automation that accept inputs,
