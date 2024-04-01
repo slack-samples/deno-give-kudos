@@ -89,7 +89,7 @@ GiveKudosWorkflow.addStep(Schema.slack.functions.SendMessage, {
   message:
     `*Hey <@${kudo.outputs.fields.doer_of_good_deeds}>!* Someone wanted to share some kind words with you :otter:\n` +
     `> ${kudo.outputs.fields.kudo_message}\n` +
-    `${gif.outputs.URL}`,
+    `<${gif.outputs.URL}>`,
 });
 
 export { GiveKudosWorkflow };
