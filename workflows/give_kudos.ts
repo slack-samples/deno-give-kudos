@@ -86,13 +86,12 @@ const kudo = GiveKudosWorkflow.addStep(
 );
 
 /**
- * A connector function can be added as a workflow step.
- *
+ * Connector functions make accessing external services a single workflow step
+ * that can accept inputs from and share outputs with other steps.
  * Learn more: https://api.slack.com/automation/connectors
  */
 const gif = GiveKudosWorkflow.addStep(
   Connectors.Giphy.functions.GetTranslatedGif,
-  // "A014JS9DWH0#/functions/get_translated_gif",
   {
     search_term: `The Office: ${kudo.outputs.fields.kudo_vibe} (lighthearted)`,
     weirdness: 8,
