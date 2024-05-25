@@ -9,7 +9,7 @@ import { DefineFunction, Schema, SlackFunction } from "deno-slack-sdk/mod.ts";
 export const FormatMessageFunction = DefineFunction({
   callback_id: "format_message",
   title: "Format the kudo message",
-  description: "",
+  description: "Structure a message with kudo contents",
   source_file: "functions/format_message.ts", // The file with the exported function handler
   input_parameters: {
     properties: {
