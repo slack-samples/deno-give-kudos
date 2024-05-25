@@ -3,6 +3,12 @@
 Share warm kudos and kind words with anyone in your workspace using functions
 and a workflow!
 
+This sample showcases built-in functions, a custom function, and
+[the Giphy connector](https://api.slack.com/reference/connectors/giphy/get_random_gif)
+in a workflow where inputs are gathered from a form and posted to channel.
+
+![an awesome cow celebrating kudos for slackbot](https://github.com/slack-samples/deno-give-kudos/assets/18134219/126053c6-b5f8-4535-90d7-764c00a2be49 "thanks @slackbot")
+
 **Guide Outline**:
 
 - [Setup](#setup)
