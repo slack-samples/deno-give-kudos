@@ -3,13 +3,18 @@
 Share warm kudos and kind words with anyone in your workspace using functions
 and a workflow!
 
+This sample showcases Slack functions, a custom function, and
+[the Giphy connector](https://api.slack.com/reference/connectors/giphy/get_random_gif)
+in a workflow where inputs are gathered from a form and posted to channel.
+
+![an awesome cow celebrating kudos for slackbot](https://github.com/slack-samples/deno-give-kudos/assets/18134219/126053c6-b5f8-4535-90d7-764c00a2be49 "thanks @slackbot")
+
 **Guide Outline**:
 
 - [Setup](#setup)
   - [Install the Slack CLI](#install-the-slack-cli)
   - [Clone the Sample App](#clone-the-sample-app)
 - [Running Your Project Locally](#running-your-project-locally)
-  - [Updating the GIF Catalog](#updating-the-gif-catalog)
 - [Creating Triggers](#creating-triggers)
 - [Datastores](#datastores)
 - [Testing](#testing)
@@ -60,34 +65,6 @@ Connected, awaiting events
 
 To stop running locally, press `<CTRL> + C` to end the process.
 
-### Updating the GIF Catalog
-
-The GIFs that accompony a kudo are selected randomly after filtering against
-user input. The GIF catalog can be found in the `./assets/gifs.json` file and
-fixed to your fancies!
-
-```javascript
-// ./assets/gifs.json
-
-[{
-  "URL": "https://media1.giphy.com/media/ZfK4cXKJTTay1Ava29/giphy.gif",
-  "alt_text": "A person wearing a banana hat says thanks a bunch",
-  "tags": ["thankful"]
-}, {
-  "URL": "https://media2.giphy.com/media/ZfK4cXKJTTay1Ava29/giphy.gif",
-  "alt_text": "Dwight from The Office says thank you",
-  "tags": ["thankful", "appreciation"]
-}, {
-  ...
-}]
-```
-
-Each GIF is represented by an object with a `URL` of the GIF, `alt_text` that
-describes the GIF, and a `tags` array.
-
-Strings in the `tags` array are checked against the `kudo_vibe`, and GIFs that
-pass the vibe check are added to the pool of possibily chosen animations.
-
 ## Creating Triggers
 
 [Triggers](https://api.slack.com/automation/triggers) are what cause workflows
@@ -133,16 +110,11 @@ To manually create a trigger, use the following command:
 $ slack trigger create --trigger-def triggers/give_kudos.ts
 ```
 
-## Datastores
-
-For storing data related to your app, datastores offer secure storage on Slack
-infrastructure. The use of a datastore requires the
-`datastore:write`/`datastore:read` scopes to be present in your manifest.
-
 ## Testing
 
-For an example of how to test a function, see `functions/find_gif_test.ts`. Test
-filenames should be suffixed with `_test`.
+For an example of how to test a function, see
+`functions/format_message_test.ts`. Test filenames should be suffixed with
+`_test`.
 
 Run all tests with `deno test`:
 
@@ -179,12 +151,6 @@ $ slack activity --tail
 
 Contains `apps.dev.json` and `apps.json`, which include installation details for
 development and deployed apps.
-
-### `datastores/`
-
-[Datastores](https://api.slack.com/automation/datastores) securely store data
-for your application on Slack infrastructure. Required scopes to use datastores
-include `datastore:write` and `datastore:read`.
 
 ### `functions/`
 

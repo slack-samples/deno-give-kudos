@@ -16,6 +16,9 @@ const trigger: Trigger<typeof GiveKudosWorkflow.definition> = {
     interactivity: {
       value: TriggerContextData.Shortcut.interactivity,
     },
+    channel_id: {
+      value: TriggerContextData.Shortcut.channel_id,
+    },
   },
 };
 
