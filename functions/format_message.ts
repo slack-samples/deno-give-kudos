@@ -19,7 +19,7 @@ export const FormatMessageFunction = DefineFunction({
       },
       kudo_message: {
         type: Schema.types.string,
-        description: "The message with good remarks",
+        description: "The message containing good remarks",
       },
       gif_title_url: {
         type: Schema.types.string,
