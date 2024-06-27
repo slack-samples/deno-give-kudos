@@ -3,7 +3,7 @@
 Share warm kudos and kind words with anyone in your workspace using functions
 and a workflow!
 
-This sample showcases built-in functions, a custom function, and
+This sample showcases Slack functions, a custom function, and
 [the Giphy connector](https://api.slack.com/reference/connectors/giphy/get_random_gif)
 in a workflow where inputs are gathered from a form and posted to channel.
 
