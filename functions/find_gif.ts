@@ -1,5 +1,5 @@
 import { DefineFunction, Schema, SlackFunction } from "deno-slack-sdk/mod.ts";
-import gifs from "../assets/gifs.json" with { type: "json" };
+import gifs from "./gifs.ts";
 
 /**
  * Functions are reusable building blocks of automation that accept inputs,
@@ -46,15 +46,10 @@ const getEnergy = (vibe: string): string => {
   return "otter"; // 🦦
 };
 
-interface GIF {
-  URL: string;
-  alt_text?: string;
-  tags: string[];
-}
 
-const matchVibe = (vibe: string): GIF => {
+const matchVibe = (vibe: string) => {
   const energy = getEnergy(vibe);
-  const matches = gifs.filter((g: GIF) => g.tags.includes(energy));
+  const matches = gifs.filter((g) => g.tags.includes(energy));
   const randomGIF = Math.floor(Math.random() * matches.length);
   return matches[randomGIF];
 };

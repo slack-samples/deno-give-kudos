@@ -1,4 +1,10 @@
-[{
+interface GIF {
+  URL: string;
+  alt_text?: string;
+  tags: string[];
+}
+
+const gifList: GIF[] = [{
   "URL": "https://media2.giphy.com/media/3oEjHWXddcCOGZNmFO/giphy.gif",
   "alt_text": "A person wearing a banana hat says thanks a bunch",
   "tags": ["thankful"]
@@ -74,4 +80,6 @@
   "URL": "https://media0.giphy.com/media/tQAApm4PMOpiM/giphy.gif",
   "alt_text": "Floating otters holding hands. Aww",
   "tags": ["otter"]
-}]
+}];
+
+export default gifList;
