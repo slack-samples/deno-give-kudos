@@ -46,7 +46,6 @@ const getEnergy = (vibe: string): string => {
   return "otter"; // 🦦
 };
 
-
 const matchVibe = (vibe: string) => {
   const energy = getEnergy(vibe);
   const matches = gifs.filter((g) => g.tags.includes(energy));
