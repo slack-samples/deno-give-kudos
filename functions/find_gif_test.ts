@@ -1,5 +1,5 @@
 import { SlackFunctionTester } from "deno-slack-sdk/mod.ts";
-import { assertArrayIncludes } from "https://deno.land/std@0.153.0/testing/asserts.ts";
+import { assertArrayIncludes } from "@std/assert";
 import FindGIF from "./find_gif.ts";
 
 /**
