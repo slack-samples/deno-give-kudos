@@ -1,4 +1,4 @@
-import { SlackFunctionTester } from "deno-slack-sdk/mod.ts";
+import { SlackFunctionTester } from "@slack/sdk";
 import { assertArrayIncludes } from "@std/assert";
 import FindGIF from "./find_gif.ts";
 
