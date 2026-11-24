@@ -1,4 +1,4 @@
-import { Manifest } from "deno-slack-sdk/mod.ts";
+import { Manifest } from "@slack/sdk";
 import { FindGIFFunction } from "./functions/find_gif.ts";
 import { GiveKudosWorkflow } from "./workflows/give_kudos.ts";
 
